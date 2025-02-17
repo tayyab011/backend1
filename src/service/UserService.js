@@ -48,6 +48,7 @@ export const loginService = async (req, res) => {
         sameSite: "none",
         secure: true,
         path: "/",
+        domain: "https://mernbknd1.netlify.app",
       };
 
       res.cookie("token", token, options);
