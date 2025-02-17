@@ -15,7 +15,7 @@ const app = express();
 // Global Application Middleware
 const allowedOrigins = [
   "http://localhost:5173",  // For local development
-  "https://your-frontend-domain.com", // Replace with your actual deployed frontend URL
+  "https://mernbknd1.netlify.app/", // Replace with your actual deployed frontend URL
 ];
 
 app.use(
