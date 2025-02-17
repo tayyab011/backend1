@@ -51,12 +51,12 @@ export const loginService = async (req, res) => {
       };
 
       res.cookie("token", token, options);
-      return res.json{
+      return res.json({
         status: true,
         token: token,
         data: data,
         msg: "Login success.",
-      };
+      });
     } else {
       return { status: false, data: data, msg: "Login failed." };
     }
