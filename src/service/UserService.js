@@ -44,14 +44,14 @@ export const loginService = async (req, res) => {
       // Set cookie
       let options = {
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-        httpOnly: false, // False means allow cookies in all browsers
+        httpOnly: true, // False means allow cookies in all browsers
         sameSite: "none",
         secure: true,
         path: "/",
       };
 
       res.cookie("token", token, options);
-      return {
+      return res.json{
         status: true,
         token: token,
         data: data,
