@@ -42,14 +42,15 @@ export const loginService = async (req, res) => {
       let token = EncodeToken({email});
 
       // Set cookie
-      let options = {
-        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-        httpOnly: true, // False means allow cookies in all browsers
-        sameSite: "none",
-        secure: false,
-        path: "/",
-        domain: "https://mernbknd1.netlify.app",
-      };
+     let options = {
+       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+       httpOnly: true,
+       sameSite: "none", // For cross-origin cookies
+       secure: true, // Ensures the cookie is only sent over HTTPS
+       path: "/",
+       domain: "mernbknd1.netlify.app", // Frontend domain
+     };
+
 
       res.cookie("token", token, options);
       return res.json({
