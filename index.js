@@ -13,13 +13,21 @@ import {
 const app = express();
 
 // Global Application Middleware
+const allowedOrigins = [
+  "http://localhost:5173",  // For local development
+  "https://your-frontend-domain.com", // Replace with your actual deployed frontend URL
+];
+
 app.use(
   cors({
     credentials: true,
-    origin: [
-      "http://localhost:5173",
-      "https://mernbasicproject1.netlify.app",
-    ].filter(Boolean),
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
   })
 );
 app.use(express.json({ limit: MAX_JSON_SIZE }));
